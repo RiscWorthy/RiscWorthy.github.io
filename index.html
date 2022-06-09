@@ -1,1 +1,13 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <h1>Hello World</h1>
+<script>
+$.ajax({
+  url: "https://pokeapi.co/api/v2/pokemon/pikachu/",
+  success(data){
+    console.log(data)
+  },
+  error(err){
+    console.log(err)
+  }
+})
+</script>
