@@ -4,7 +4,7 @@
 $.ajax({
   url: "https://pokeapi.co/api/v2/pokemon/pikachu/",
   success(data){
-    console.log(data)
+    console.log(data.sprite.front_default)
   },
   error(err){
     console.log(err)
