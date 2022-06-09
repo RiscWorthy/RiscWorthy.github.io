@@ -10,7 +10,6 @@
 <div id="app">
   <h1>Hello World</h1>
   <p>{{name}}</p>
-  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" />
   <img v-if="this.img != ''" :src="this.img"/>
 </div>
 
@@ -26,10 +25,11 @@ new Vue({
     }
   },
   created(){
+    let self = this
     $.ajax({
-      url: `https://pokeapi.co/api/v2/pokemon/${this.name}/`,
+      url: `https://pokeapi.co/api/v2/pokemon/${self.name}/`,
       success(data){
-        this.img = data.sprites.front_default
+        self.img = data.sprites.front_default
         console.log(data.sprites.front_default)
       },
       error(err){
