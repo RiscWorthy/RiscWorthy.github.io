@@ -1,13 +1,33 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<h1>Hello World</h1>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.cjs.min.js" integrity="sha512-4ztiRs4Iu216VkGake07ojPy+Jp5LpaRV8WgGblQIZj/6O3st4NYucCsWKZ/RWyoBgJu941+PXBFnqgVAaDPgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div id="app">
+  <h1>Hello World</h1>
+  <p>{{name}}</p>
+  <img :src="this.img"/>
+</div>
+
+
 <script>
-$.ajax({
-  url: "https://pokeapi.co/api/v2/pokemon/pikachu/",
-  success(data){
-    console.log(data.sprite.front_default)
+  
+const app = createApp({
+  el: "#app",
+  data: {
+    return {
+      name: "pikachu",
+      img: ""
+    }
   },
-  error(err){
-    console.log(err)
+  created(){
+    $.ajax({
+      url: `https://pokeapi.co/api/v2/pokemon/${this.name}/`,
+      success(data){
+        this.img = data.sprites.front_default
+      },
+      error(err){
+        console.log(err)
+      }
+    })  
   }
+       
 })
 </script>
